@@ -43,6 +43,7 @@ window.loopcallback = function() {
                 turn = response.data.your_turn;
                 if(turn == false) {
                     cc.find("Canvas/New Sprite(Splash)/turn_label").getComponent(cc.Label).string="对方回合";
+                    firstsch = false;
                 } else {
                     cc.find("Canvas/New Sprite(Splash)/turn_label").getComponent(cc.Label).string="你的回合";
                     firstsch = true;
@@ -221,7 +222,6 @@ window.loopcallback = function() {
                     }
                 }
             } else if(response.code == 400) {
-                cc.log("游戏已结束！！！！！！！！");
                 let uuid=cc.sys.localStorage.getItem("uuid");
                 let url = "http://172.17.173.97:9000/api/game/" + uuid;
                 let token=cc.sys.localStorage.getItem("token");
@@ -234,20 +234,20 @@ window.loopcallback = function() {
                     if (xhr2.status == 200) {
                         var response = xhr2.responseText;
                         response = JSON.parse(response);
-                        if (response.winner == 0) {
+                        if (response.data.winner == 0) {
                             cc.find("Canvas/New Sprite(Splash)/Mask").zIndex = 999;
                             cc.find("Canvas/New Sprite(Splash)/Mask").active = true;
                             cc.find("Canvas/New Sprite(Splash)/result").zIndex = 9999;
                             cc.find("Canvas/New Sprite(Splash)/result").active = true;
                             cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "房主获胜";
-                        } else if (response.winner == 1) {
+                        } else if (response.data.winner == 1) {
                             cc.find("Canvas/New Sprite(Splash)/Mask").zIndex = 999;
                             cc.find("Canvas/New Sprite(Splash)/Mask").active = true;
                             cc.find("Canvas/New Sprite(Splash)/result").zIndex = 9999;
                             cc.find("Canvas/New Sprite(Splash)/result").active = true;
                             cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "参与者获胜";
 
-                        } else if (response.winner == -1) {
+                        } else if (response.data.winner == -1) {
                             cc.find("Canvas/New Sprite(Splash)/Mask").zIndex = 999;
                             cc.find("Canvas/New Sprite(Splash)/Mask").active = true;
                             cc.find("Canvas/New Sprite(Splash)/result").zIndex = 9999;
@@ -370,7 +370,7 @@ cc.Class({
                         if (card_c.length!=0 && layer[layer.length-1][0]!='C') {robot.tap_c();}
                         else if (card_d.length!=0 && layer[layer.length-1][0]!='D') {robot.tap_d();}
                         else if (card_h.length!=0 && layer[layer.length-1][0]!='H') {robot.tap_h();}
-                        else if (card_2s.length!=0 && layer[layer.length-1][0]!='S') {robot.tap_s();}
+                        else if (card_s.length!=0 && layer[layer.length-1][0]!='S') {robot.tap_s();}
                         else {robot.tap_store();}
                     }
                 }
@@ -452,6 +452,7 @@ cc.Class({
                 // cc.log(self);
                 turn = false;
                 if (firstsch == false) {
+                    cc.log('schedule开启！！');
                     self.schedule(loopcallback, 0.3);
                 }
                 firstsch = false;
