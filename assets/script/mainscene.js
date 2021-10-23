@@ -67,6 +67,8 @@ cc.Class({
 
 
     callback1(button1) {
+        this.login_enter.zIndex = 9999;
+        this.mask.zIndex = 999;
         this.login_enter.active = true;
         this.mask.active = true;
     },

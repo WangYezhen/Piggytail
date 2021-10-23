@@ -193,6 +193,22 @@ cc.Class({
                 layer_p2c = [];
             }
         }
+        if(store_p2c.length == 0) {
+            cc.log("finished!");
+            let total_1 = cardp2c_1c.length + cardp2c_1d.length + cardp2c_1h.length + cardp2c_1s.length;
+            let total_2 = cardp2c_2c.length + cardp2c_2d.length + cardp2c_2h.length + cardp2c_2s.length;
+            cc.find("Canvas/New Sprite(Splash)/Mask").zIndex = 999;
+            cc.find("Canvas/New Sprite(Splash)/Mask").active = true;
+            cc.find("Canvas/New Sprite(Splash)/result").zIndex = 9999;
+            cc.find("Canvas/New Sprite(Splash)/result").active = true;
+            if (total_1 < total_2) {
+                cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "玩家获胜";
+            } else if(total_2 < total_1) {
+                cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "机器人获胜";
+            } else {
+                cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "平局";
+            }
+        }
         if (turn_p2c == 1) {
             turn_p2c = 2;
             cc.find("Canvas/New Sprite(Splash)/turn_label").getComponent(cc.Label).string="机器人回合";
@@ -202,22 +218,6 @@ cc.Class({
             turn_p2c = 1;
             cc.find("Canvas/New Sprite(Splash)/turn_label").getComponent(cc.Label).string="玩家回合";
         }
-    if(store_p2c.length == 0) {
-        cc.log("finished!");
-        let total_1 = cardp2c_1c.length + cardp2c_1d.length + cardp2c_1h.length + cardp2c_1s.length;
-        let total_2 = cardp2c_2c.length + cardp2c_2d.length + cardp2c_2h.length + cardp2c_2s.length;
-        cc.find("Canvas/New Sprite(Splash)/Mask").zIndex = 999;
-        cc.find("Canvas/New Sprite(Splash)/Mask").active = true;
-        cc.find("Canvas/New Sprite(Splash)/result").zIndex = 9999;
-        cc.find("Canvas/New Sprite(Splash)/result").active = true;
-        if (total_1 < total_2) {
-            cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "玩家获胜";
-        } else if(total_2 < total_1) {
-            cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "机器人获胜";
-        } else {
-            cc.find("Canvas/New Sprite(Splash)/result/result_label").getComponent(cc.Label).string = "平局";
-        }
-    }
     },
 
     tap_1c() {
