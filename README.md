@@ -27,11 +27,9 @@
 
 ## 安装
 
-本项目由`Cocos Creator v2.4.5`开发，虽然已经部署在云服务器，但由于联机对战需要使用校园网，网速受限，易产生无法登录或某些异常，请测评组下载`Cocos Creator`运行测试</br>
-下载完成后，直接将文件用Cocos Creator打开即可，运行请使用浏览器而不是模拟器</br>
-<a href="https://www.cocos.com/products#CocosCreator">Cocos Creator</a></br>
-通过域名访问（不建议）</br>
-<a href="https://github.com/Bngel/PigGame/releases/tag/1.1.0-RELEASE">Piggytail</a></br>
+本项目由`Cocos Creator v2.4.5`开发，虽然已经部署在云服务器，但由于联机对战需要使用校园网，网速受限，易产生无法登录或某些异常，请测评组下载<a href="https://www.cocos.com/products#CocosCreator">Cocos Creator</a>运行测试</br>
+下载完成后，直接将文件用Cocos Creator打开即可，运行请使用浏览器而不是模拟器（在Cocos界面的中上方）</br>
+通过域名访问<a href="bngel.cn">Piggytail</a>（不建议）</br>
 
 
 ## 使用说明
